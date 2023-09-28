@@ -1,0 +1,43 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-image: url("../images/campo.jpg");
+  background-color: rgb(235, 235, 235, 0.9);
+  background-size: cover;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-tempo {
+  text-align: center;
+  padding: 30px 0px;
+  border: 2px solid rgb(255, 8, 0);
+  background-color: wheat;
+  width: 30%;
+}
+
+.box-tempo,
+input,
+h3,
+h4,
+p {
+  margin: 10px;
+}
+
+#buscar-cidade {
+  padding: 10px;
+  font-size: 1.25em;
+  border: none;
+  border-radius: 10px;
+}
+
+#buscar-cidade:focus {
+  outline: none;
+  border: 20px solid rgb(255, 8, 0, 0.2); /*apagar*/
+  transition: border 0.2s ease;
+}
