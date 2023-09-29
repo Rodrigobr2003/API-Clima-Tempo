@@ -4,6 +4,13 @@ const routes = require("./routes");
 
 const app = express();
 
+app.use(express.static(path.resolve(__dirname, "public", "css")));
+app.use(express.static(path.resolve(__dirname, "public", "images")));
+app.use(express.static(path.resolve(__dirname, "src", "js")));
+
+app.set("views", path.resolve(__dirname, "src", "views"));
+app.set("view engine", "ejs");
+
 app.use(routes);
 
 app.listen(3001, () => {

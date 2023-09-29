@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url("../images/campo.jpg");
+  background-image: url("/campo.jpg");
   background-color: rgb(235, 235, 235, 0.9);
   background-size: cover;
   margin: 20px;
