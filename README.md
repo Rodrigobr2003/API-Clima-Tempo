@@ -17,4 +17,4 @@ Este projeto é uma API de clima e tempo que fornece informações atualizadas s
 
 - Node.js
 - Express
-- Open-meteo API
+- OpenWheater API
