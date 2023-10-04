@@ -4,20 +4,25 @@
 }
 
 body {
-  background-image: url("/campo.jpg");
-  background-color: rgb(235, 235, 235, 0.9);
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to bottom, #5a4fcf, #6495ed);
+  background-repeat: no-repeat;
   background-size: cover;
-  margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  font-family: Geneva, Verdana, sans-serif;
 }
 
 .box-tempo {
   text-align: center;
   padding: 30px 0px;
-  border: 2px solid rgb(255, 8, 0);
-  background-color: wheat;
+  background-color: #2a52be;
+  border-radius: 60px;
+  box-shadow: 5px 10px 10px #222222;
+
   width: 30%;
 }
 
@@ -34,10 +39,11 @@ p {
   font-size: 1.25em;
   border: none;
   border-radius: 10px;
+  transition: box-shadow 0.6s ease;
 }
 
 #buscar-cidade:focus {
   outline: none;
-  border: 20px solid rgb(255, 8, 0, 0.2); /*apagar*/
-  transition: border 0.2s ease;
+  box-shadow: 6px 6px 3px rgb(68, 121, 235);
+  transition: box-shadow 0.4s ease;
 }
