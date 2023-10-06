@@ -10,7 +10,7 @@ fetch("http://localhost:3001/data")
     //Temperatura
     const temperaturaDOM = document.querySelector("#temperatura");
     let calcTemp = data.main.temp - 273.15;
-    temperaturaDOM.innerHTML = Math.round(calcTemp);
+    temperaturaDOM.innerHTML = `${Math.round(calcTemp)} °C`;
 
     //Dia
     const diaDOM = document.querySelector("#dia");
@@ -37,16 +37,16 @@ fetch("http://localhost:3001/data")
     //Chuva
     const chuvaDOM = document.querySelector("#chuva");
     if (data.rain !== undefined) {
-      chuvaDOM.innerHTML = Math.round(data.rain["1h"] * 10);
+      chuvaDOM.innerHTML = `${Math.round(data.rain["1h"] * 10)}%`;
     } else {
-      chuvaDOM.innerHTML = 0;
+      chuvaDOM.innerHTML = `0%`;
     }
 
     //Umidade
     const umidadeDOM = document.querySelector("#umidade");
-    umidadeDOM.innerHTML = data.main.humidity;
+    umidadeDOM.innerHTML = `${data.main.humidity}%`;
 
     //Vento
     const ventoDOM = document.querySelector("#vento");
-    ventoDOM.innerHTML = Math.round(data.wind.speed * 3.6);
+    ventoDOM.innerHTML = `${Math.round(data.wind.speed * 3.6)} km/h`;
   });
