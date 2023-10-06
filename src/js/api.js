@@ -36,7 +36,11 @@ fetch("http://localhost:3001/data")
 
     //Chuva
     const chuvaDOM = document.querySelector("#chuva");
-    chuvaDOM.innerHTML = Math.round(data.rain["1h"] * 10);
+    if (data.rain !== undefined) {
+      chuvaDOM.innerHTML = Math.round(data.rain["1h"] * 10);
+    } else {
+      chuvaDOM.innerHTML = 0;
+    }
 
     //Umidade
     const umidadeDOM = document.querySelector("#umidade");
