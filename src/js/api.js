@@ -14,6 +14,7 @@ cityForm.addEventListener("submit", function (event) {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(`API CLIMA: ${data}`);
       //Nome da cidade
       const nomeCidadeDOM = document.querySelector("#cidade");
       nomeCidadeDOM.innerHTML = data.name;
@@ -29,27 +30,10 @@ cityForm.addEventListener("submit", function (event) {
       let calcTemp = data.main.temp - 273.15;
       temperaturaDOM.innerHTML = `${Math.round(calcTemp)} °C`;
 
-      //Dia
-      const diaDOM = document.querySelector("#dia");
-      let date = new Date();
-      let diaAtual = date.getDay();
-
-      if (diaAtual == 0) diaAtual = "Domingo";
-      if (diaAtual == 1) diaAtual = "Segunda-Feira";
-      if (diaAtual == 2) diaAtual = "Terça-Feira";
-      if (diaAtual == 3) diaAtual = "Quarta-Feira";
-      if (diaAtual == 4) diaAtual = "Quinta-Feira";
-      if (diaAtual == 5) diaAtual = "Sexta-Feira";
-      if (diaAtual == 6) diaAtual = "Sábado";
-
-      diaDOM.innerHTML = `${diaAtual} ,`;
-
-      //Hora
-      const horaDOM = document.querySelector("#hora");
-      let horaAtual = date.getHours();
-      let minAtual = date.getMinutes();
-      if (minAtual < 10) minAtual = `0${minAtual}`; //não é o jeito certo de se fazer
-      horaDOM.innerHTML = `${horaAtual}:${minAtual}`;
+      //Hora e Dia
+      const lat = data.coord.lat;
+      const lon = data.coord.lon;
+      mostraHora(lat, lon);
 
       //Chuva
       const chuvaDOM = document.querySelector("#chuva");
@@ -71,3 +55,46 @@ cityForm.addEventListener("submit", function (event) {
       console.error("Erro:", error);
     });
 });
+
+function mostraHora(lat, lon) {
+  fetch("/enviaHora", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ lat, lon }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      const horaDOM = document.querySelector("#hora");
+
+      //Formatação hora
+      const stringData = data.formatted;
+      const transformador = new Date(stringData);
+      let horas = transformador.getHours();
+      let minutos = transformador.getMinutes();
+      const horaFormatada = `${horas}:${minutos}`;
+
+      horaDOM.innerHTML = horaFormatada;
+
+      //Formatação dia
+      const diaDOM = document.querySelector("#dia");
+      let date = new Date();
+      let diaAtual = date.getDay();
+
+      if (diaAtual == 0) diaAtual = "Domingo";
+      if (diaAtual == 1) diaAtual = "Segunda-Feira";
+      if (diaAtual == 2) diaAtual = "Terça-Feira";
+      if (diaAtual == 3) diaAtual = "Quarta-Feira";
+      if (diaAtual == 4) diaAtual = "Quinta-Feira";
+      if (diaAtual == 5) diaAtual = "Sexta-Feira";
+      if (diaAtual == 6) diaAtual = "Sábado";
+
+      diaDOM.innerHTML = `${diaAtual} ,`;
+    })
+    .catch((error) => {
+      console.error("Erro:", error);
+    });
+}

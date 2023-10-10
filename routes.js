@@ -10,4 +10,6 @@ routes.get("/", controllerHome.paginaHome);
 
 routes.post("/enviaCidade", controllerData.enviaCidade);
 
+routes.post("/enviaHora", controllerData.enviaHora);
+
 module.exports = routes;
