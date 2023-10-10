@@ -18,6 +18,12 @@ cityForm.addEventListener("submit", function (event) {
       const nomeCidadeDOM = document.querySelector("#cidade");
       nomeCidadeDOM.innerHTML = data.name;
 
+      //Bandeira do país
+      const country_code = data.sys.country;
+      const flagDOM = document.querySelector(".flagImg");
+
+      flagDOM.src = `https://flagsapi.com/${country_code}/flat/24.png`;
+
       //Temperatura
       const temperaturaDOM = document.querySelector("#temperatura");
       let calcTemp = data.main.temp - 273.15;
