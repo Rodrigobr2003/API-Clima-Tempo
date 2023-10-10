@@ -8,6 +8,6 @@ const routes = express.Router();
 
 routes.get("/", controllerHome.paginaHome);
 
-routes.get("/data", controllerData.sendData);
+routes.post("/enviaCidade", controllerData.enviaCidade);
 
 module.exports = routes;
