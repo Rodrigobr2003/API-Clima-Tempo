@@ -33,7 +33,7 @@ cityForm.addEventListener("submit", function (event) {
       const lat = data.coord.lat;
       const lon = data.coord.lon;
       mostraHora(lat, lon);
-
+      console.log(data);
       //Chuva
       const chuvaDOM = document.querySelector("#chuva");
       if (data.rain !== undefined) {
@@ -52,6 +52,7 @@ cityForm.addEventListener("submit", function (event) {
     })
     .catch((error) => {
       console.error("Erro:", error);
+      alert("Não foi possível encontrar esta cidade");
     });
 });
 

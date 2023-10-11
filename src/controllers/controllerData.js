@@ -15,8 +15,12 @@ exports.enviaCidade = (req, res) => {
       res.send(response.data);
     })
     .catch((erro) => {
-      console.log(erro);
-      res.status(500).send("Erro ao buscar dados da API OpenWeather");
+      if (erro.response && erro.response.status === 404) {
+        res.status(404).send("Cidade não encontrada");
+      } else {
+        console.error(erro);
+        res.status(500).send("Erro ao buscar dados da API OpenWeather");
+      }
     });
 };
 
