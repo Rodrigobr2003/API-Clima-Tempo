@@ -14,7 +14,6 @@ cityForm.addEventListener("submit", function (event) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(`API CLIMA: ${data}`);
       //Nome da cidade
       const nomeCidadeDOM = document.querySelector("#cidade");
       nomeCidadeDOM.innerHTML = data.name;
@@ -30,7 +29,7 @@ cityForm.addEventListener("submit", function (event) {
       let calcTemp = data.main.temp - 273.15;
       temperaturaDOM.innerHTML = `${Math.round(calcTemp)} °C`;
 
-      //Hora e Dia
+      //Hora
       const lat = data.coord.lat;
       const lon = data.coord.lon;
       mostraHora(lat, lon);
@@ -66,8 +65,6 @@ function mostraHora(lat, lon) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
       const horaDOM = document.querySelector("#hora");
 
       //Formatação hora
@@ -81,18 +78,17 @@ function mostraHora(lat, lon) {
 
       //Formatação dia
       const diaDOM = document.querySelector("#dia");
-      let date = new Date();
-      let diaAtual = date.getDay();
+      let dateCidade = transformador.getDay();
 
-      if (diaAtual == 0) diaAtual = "Domingo";
-      if (diaAtual == 1) diaAtual = "Segunda-Feira";
-      if (diaAtual == 2) diaAtual = "Terça-Feira";
-      if (diaAtual == 3) diaAtual = "Quarta-Feira";
-      if (diaAtual == 4) diaAtual = "Quinta-Feira";
-      if (diaAtual == 5) diaAtual = "Sexta-Feira";
-      if (diaAtual == 6) diaAtual = "Sábado";
+      if (dateCidade == 0) dateCidade = "Domingo";
+      if (dateCidade == 1) dateCidade = "Segunda-Feira";
+      if (dateCidade == 2) dateCidade = "Terça-Feira";
+      if (dateCidade == 3) dateCidade = "Quarta-Feira";
+      if (dateCidade == 4) dateCidade = "Quinta-Feira";
+      if (dateCidade == 5) dateCidade = "Sexta-Feira";
+      if (dateCidade == 6) dateCidade = "Sábado";
 
-      diaDOM.innerHTML = `${diaAtual} ,`;
+      diaDOM.innerHTML = `${dateCidade} ,`;
     })
     .catch((error) => {
       console.error("Erro:", error);
