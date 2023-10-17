@@ -105,23 +105,62 @@ p {
   vertical-align: middle;
 }
 
-#chuva {
+.dado {
   color: white;
   font-size: 1.5em;
   margin-left: 10px;
   vertical-align: middle;
 }
 
-#umidade {
-  color: white;
-  font-size: 1.5em;
-  margin-left: 10px;
-  vertical-align: middle;
+@media (max-width: 1200px) {
+  .box-tempo {
+    width: 50%;
+  }
 }
 
-#vento {
-  color: white;
-  font-size: 1.5em;
-  margin-left: 10px;
-  vertical-align: middle;
+@media (max-width: 750px) {
+  .box-tempo {
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .box-tempo {
+    width: 90%;
+  }
+
+  #buscar-cidade {
+    width: 50%;
+  }
+
+  #cidade {
+    font-size: 2em;
+  }
+
+  .data-hora {
+    font-size: 1em;
+  }
+
+  #temperatura {
+    font-size: 1.8em;
+  }
+
+  .info-clima {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 350px) {
+  .data-hora {
+    font-size: 1em;
+  }
+
+  .info-clima {
+    font-size: 1.8em;
+  }
+
+  .dado {
+    font-size: 1.2em;
+    margin-left: 5px;
+  }
 }
